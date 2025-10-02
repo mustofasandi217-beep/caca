@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metode Pembayaran - Sandi Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, #1e5799, #2989d8);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .payment-section {
+            padding: 30px;
+        }
+
+        .payment-method {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .payment-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .dana-icon {
+            background: linear-gradient(to right, #00a3ff, #0080ff);
+        }
+
+        .gopay-icon {
+            background: linear-gradient(to right, #00aa13, #00c853);
+        }
+
+        .telegram-icon {
+            background: linear-gradient(to right, #0088cc, #34aadc);
+        }
+
+        .payment-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e5799;
+        }
+
+        .payment-details {
+            background-color: #f5f9ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .payment-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .payment-row:last-child {
+            border-bottom: none;
+        }
+
+        .payment-label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .payment-value {
+            font-weight: 600;
+            color: #1e5799;
+        }
+
+        .copy-btn {
+            background-color: #1e5799;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .copy-btn:hover {
+            background-color: #2989d8;
+        }
+
+        .telegram-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f5f9ff;
+            border-radius: 12px;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(to right, #0088cc, #34aadc);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
+        }
+
+        .telegram-btn i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            .payment-section {
+                padding: 20px;
+            }
+            
+            .payment-row {
+                flex-direction: column;
+            }
+            
+            .payment-value {
+                margin-top: 5px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Metode Pembayaran</h1>
+            <p>Pilih metode pembayaran yang tersedia di bawah ini</p>
+        </header>
+        
+        <div class="payment-section">
+            <div class="payment-method">
+                <div class="payment-header">
+                    <div class="payment-icon dana-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h2 class="payment-title">DANA</h2>
+                </div>
+                <div class="payment-details">
+                    <div class="payment-row">
+                        <span class="payment-label">Nomor:</span>
+                        <span class="payment-value">0881024028980</span>
+                    </div>
+                    <div class="payment-row">
+                        <span class="payment-label">Nama:</span>
+                        <span class="payment-value">sandi712</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('0881024028980')">
+                        <i class="fas fa-copy"></i> Salin Nomor
+                    </button>
+                </div>
+            </div>
+            
+            <div class="payment-method">
+                <div class="payment-header">
+                    <div class="payment-icon gopay-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h2 class="payment-title">GOPAY</h2>
+                </div>
+                <div class="payment-details">
+                    <div class="payment-row">
+                        <span class="payment-label">Nomor:</span>
+                        <span class="payment-value">0881011503069</span>
+                    </div>
+                    <div class="payment-row">
+                        <span class="payment-label">Nama:</span>
+                        <span class="payment-value">SANDI STORE</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('0881011503069')">
+                        <i class="fas fa-copy"></i> Salin Nomor
+                    </button>
+                </div>
+            </div>
+            
+            <div class="telegram-section">
+                <h2>Butuh Bantuan?</h2>
+                <p>Hubungi kami melalui Telegram untuk informasi lebih lanjut</p>
+                <a href="https://t.me/testisandi" target="_blank" class="telegram-btn">
+                    <i class="fab fa-telegram"></i> Telegram Channel
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Sandi Store. Semua hak dilindungi.</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Nomor berhasil disalin: ' + text);
+            }, function(err) {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
